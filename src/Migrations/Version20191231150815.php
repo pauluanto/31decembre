@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191231103036 extends AbstractMigration
+final class Version20191231150815 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20191231103036 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE profil (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, age INT NOT NULL, taille INT NOT NULL, poid INT DEFAULT NULL, couleur_yeux VARCHAR(255) NOT NULL, couleur_cheveux VARCHAR(255) NOT NULL, citation VARCHAR(255) DEFAULT NULL, livres VARCHAR(255) NOT NULL, cinema VARCHAR(255) NOT NULL, loisir VARCHAR(255) NOT NULL, langue_parle VARCHAR(255) NOT NULL, activite_prefere VARCHAR(255) NOT NULL, photo VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE user ADD first_name VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20191231103036 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE profil');
+        $this->addSql('ALTER TABLE user DROP first_name');
     }
 }
