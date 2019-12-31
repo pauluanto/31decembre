@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil index{% endblock %}
+
+{% block body %}
+    <h1>Profil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Age</th>
+                <th>Taille</th>
+                <th>Poid</th>
+                <th>Couleur_yeux</th>
+                <th>Couleur_cheveux</th>
+                <th>Citation</th>
+                <th>Livres</th>
+                <th>Cinema</th>
+                <th>Loisir</th>
+                <th>Langue_parle</th>
+                <th>Activite_prefere</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for profil in profils %}
+            <tr>
+                <td>{{ profil.id }}</td>
+                <td>{{ profil.title }}</td>
+                <td>{{ profil.description }}</td>
+                <td>{{ profil.age }}</td>
+                <td>{{ profil.taille }}</td>
+                <td>{{ profil.poid }}</td>
+                <td>{{ profil.couleurYeux }}</td>
+                <td>{{ profil.couleurCheveux }}</td>
+                <td>{{ profil.citation }}</td>
+                <td>{{ profil.livres }}</td>
+                <td>{{ profil.cinema }}</td>
+                <td>{{ profil.loisir }}</td>
+                <td>{{ profil.langueParle }}</td>
+                <td>{{ profil.activitePrefere }}</td>
+                <td>{{ profil.photo }}</td>
+                <td>
+                    <a href="{{ path('profil_show', {'id': profil.id}) }}">show</a>
+                    <a href="{{ path('profil_edit', {'id': profil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('profil_new') }}">Create new</a>
+{% endblock %}
